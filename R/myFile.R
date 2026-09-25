@@ -7,7 +7,12 @@ myFunction=function(moveInfo,readings,positions,edges,probs) {
   
   # Rush towards that node
   step1 <- moveOneStep(positions[3], mostLikely, edges)
-  step2 <- moveOneStep(step1, mostLikely, edges)
+  if (step1 == mostLikely){
+    step2 = 0
+  }
+  else{
+    step2 <- moveOneStep(step1, mostLikely, edges)
+  }
   
   moveInfo$moves=c(step1, step2)
   return(moveInfo)
